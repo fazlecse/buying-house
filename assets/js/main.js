@@ -194,6 +194,37 @@ $(document).ready(function () {
   }
   // Hero slider end
 
+  // Map slider start
+  // Mp start
+  // if ($(".map-slick").length) {
+  //   $(".map-slick").slick({
+  //     slidesToShow: 1,
+  //     slidesToScroll: 1,
+  //     dots: false,
+  //     arrows: true,
+  //     focusOnSelect: true,
+  //     // vertical: true,
+  //     // rtl: true,
+  //     responsive: [
+  //       {
+  //         breakpoint: 768,
+  //         settings: {
+  //           slidesToShow: 3,
+  //           arrows: true,
+  //         },
+  //       },
+  //       {
+  //         breakpoint: 426,
+  //         settings: {
+  //           slidesToShow: 2,
+  //           arrows: true,
+  //         },
+  //       },
+  //     ],
+  //   });
+  // }
+  // Map slider end
+
   // cmn select2 start
   $(".cmn-select2").select2();
   // cmn select2 end
@@ -470,3 +501,41 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", toggleDropdownAttributes);
 });
 // Custom dropdown end
+
+// World map slider start
+$(document).ready(function () {
+  const $mapPaths = $("#world-map path[name]");
+  const $slider = $(".map-slick");
+
+  function highlightCountry(countryName) {
+    const target = countryName?.trim().toLowerCase();
+    $mapPaths.attr("fill", "#E6E6E6");
+
+    $mapPaths.each(function () {
+      if ($(this).attr("name")?.trim().toLowerCase() === target) {
+        $(this).attr("fill", "rgb(var(--primary-color))");
+      }
+    });
+  }
+
+  // Initialize Slick
+  $slider.slick({
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    // autoplay: true,
+  });
+
+  // Highlight country on init
+  const $initialSlide = $slider.find(".slick-slide:not(.slick-cloned)").eq(0);
+  const initCountry = $initialSlide.data("country");
+  highlightCountry(initCountry);
+
+  // Highlight country after slide change
+  $slider.on("afterChange", function (event, slick, currentSlide) {
+    const $realSlides = $slider.find(".slick-slide:not(.slick-cloned)");
+    const currentCountry = $realSlides.eq(currentSlide).data("country");
+    highlightCountry(currentCountry);
+  });
+});
+// World map slider end

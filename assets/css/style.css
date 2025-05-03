@@ -45,6 +45,7 @@ Typography
   --body-font: "Marcellus", serif;
   --dm-sans: "DM Sans", sans-serif;
   --primary-color: 184, 150, 126;
+  --primary-color: 63, 122, 26;
   --body-color: 68, 67, 67;
   --heading-color: 40, 36, 31;
   --black: 0, 0, 0;
@@ -69,9 +70,9 @@ Typography
   --input-color: rgb(var(--bg-color1));
   --input-color2: #ffffff;
   --bg-color1: #ffffff;
-  --bg-color2: #F6F6F1;
+  --bg-color2: #F1F8ED;
   --bg-color3: 245, 245, 245;
-  --bg-color4: 2, 6, 18;
+  --bg-color4: #020612;
   --border-color1: rgba(231, 234, 243, 0.7);
   --border-color2: rgba(140, 152, 164, 0.25);
   --border-color3: rgba(255, 255, 255, 0.06);
@@ -613,6 +614,7 @@ Breadcrumb start
   display: inline-flex;
   justify-content: center;
   margin-bottom: 0;
+  font-size: 18px;
 }
 .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
   content: "\f105";
@@ -621,7 +623,7 @@ Breadcrumb start
   font-weight: 400;
 }
 .breadcrumb .breadcrumb-item.active {
-  color: rgb(var(--primary-color));
+  color: rgb(var(--white));
   text-transform: capitalize;
 }
 
@@ -1023,7 +1025,7 @@ Reusable style section start
 
 .link {
   transition: var(--transition);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 5px;
 }
@@ -1723,7 +1725,7 @@ Offcanvas end
   color: rgb(var(--white));
   background-color: rgb(var(--heading-color));
   padding: 0 24px;
-  border-radius: 9999px;
+  border-radius: 0;
   transition: var(--transition);
   font-size: 14px;
   display: inline-flex;
@@ -1748,7 +1750,7 @@ Offcanvas end
   display: inline-flex;
   pointer-events: none;
   gap: 8px;
-  height: 3rem;
+  height: 56px;
 }
 .cmn-btn2 .btn-wrapper .btn-single {
   position: relative;
@@ -1756,7 +1758,7 @@ Offcanvas end
   display: inline-flex;
   pointer-events: none;
   gap: 8px;
-  height: 3rem;
+  height: 56px;
 }
 .cmn-btn2 .btn-wrapper .main-text {
   display: inline-flex;
@@ -5535,6 +5537,8 @@ Our process section end
   transform: scale(1);
 }
 .category-box.sm img {
+  width: 100%;
+  height: auto;
   aspect-ratio: 4/3;
 }
 .category-box img {
@@ -5542,6 +5546,8 @@ Our process section end
   transition: var(--transition);
   -o-object-fit: cover;
      object-fit: cover;
+  width: 100%;
+  height: auto;
   aspect-ratio: 9/14;
 }
 .category-box .title {
@@ -6158,7 +6164,7 @@ Newsletter end
   position: relative;
   z-index: 0;
   padding-bottom: 40px;
-  background-color: rgb(var(--bg-color4));
+  background-color: var(--bg-color4);
   color: rgb(var(--white), 0.9);
 }
 .footer-section .footer-widget .widget-title {
@@ -6542,109 +6548,62 @@ Policy section end
 Error end
 ----------------------------------------------*/
 /*----------------------------------------------
-00. Who we are section start
+00. Global locations section start
 ----------------------------------------------*/
-.who-we-are .section-header {
-  max-width: 770px;
-  text-align: center;
-  margin: 0 auto 80px;
+.location-box {
+  border: 1px solid var(--border-color1);
+  box-shadow: var(--shadow1);
+  padding: 15px;
 }
-.who-we-are .who-we-are-content-box {
+.location-box .top-box {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
-  background-color: rgb(var(--primary-color), 0.05);
-  border-radius: 32px;
-  padding: 40px 32px;
+  gap: 15px;
 }
-.who-we-are .who-we-are-content-box .img-box {
-  max-width: 620px;
+.location-box .top-box .img-box {
+  width: 60px;
+  height: 60px;
 }
-.who-we-are .who-we-are-content-box .img-box img {
-  border-radius: 20px;
-}
-.who-we-are .who-we-are-content-box .text-box .title {
-  margin-bottom: 20px;
+.location-box .top-box .img-box img {
+  border-radius: 50%;
 }
 
-/*----------------------------------------------
-Who we are section end
-----------------------------------------------*/
-/*----------------------------------------------
-00. Design process section start
-----------------------------------------------*/
-.design-process-section .section-header {
-  max-width: 643px;
+.map-slick {
+  margin: 80px 50px 0 50px;
+  max-width: 645px;
 }
-.design-process-section .cmn-box {
-  padding: 24px;
+.map-slick .slick-slide {
+  margin: 1px;
+  border: 2px solid transparent;
+  border-radius: 10px;
 }
-.design-process-section .cmn-btn4 {
-  font-size: 14px;
-  color: rgb(var(--primary-color));
+.map-slick .slick-current {
+  border-color: rgb(var(--primary-color));
 }
-
-/*----------------------------------------------
-Design process section end
-----------------------------------------------*/
-/*----------------------------------------------
-00. Template section start
-----------------------------------------------*/
-.template-section {
-  background-color: rgb(var(--primary-color), 0.05);
+.map-slick .slick-arrow {
+  width: 41px;
+  height: 41px;
+  background-color: rgb(var(--primary-color));
+  border-radius: 50%;
 }
-.template-section .section-header {
-  max-width: 983px;
+.map-slick .slick-prev {
+  left: -50px;
 }
-
-.template-carousel {
-  position: relative;
+.map-slick .slick-prev::before {
+  line-height: 0.3;
 }
-.template-carousel .owl-nav {
-  margin-top: 0;
+.map-slick .slick-next {
+  right: -50px;
 }
-.template-carousel .owl-nav .owl-prev,
-.template-carousel .owl-nav .owl-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 56px;
-  height: 56px;
-  border-radius: 6px !important;
-  background-color: rgb(var(--bg-color4)) !important;
-  font-size: 18px !important;
-}
-.template-carousel .owl-nav .owl-prev:hover,
-.template-carousel .owl-nav .owl-next:hover {
-  background-color: rgb(var(--bg-color4), 0.8) !important;
-}
-.template-carousel .owl-nav .owl-prev {
-  left: 30px;
-}
-.template-carousel .owl-nav .owl-next {
-  right: 30px;
+.map-slick .slick-next::before {
+  line-height: 0.3;
 }
 
-/*----------------------------------------------
-Template section end
-----------------------------------------------*/
-/*----------------------------------------------
-00. Premium template section start
-----------------------------------------------*/
-.premium-section .section-header {
-  max-width: 759px;
-  margin: 0 auto 40px;
-  text-align: center;
-}
-.premium-section .cmn-tabs {
-  margin-bottom: 80px;
-}
-
-@media (max-width: 991px) {
-  .premium-section .cmn-tabs {
-    margin-bottom: 40px;
+@media (max-width: 575px) {
+  .map-slick .slick-arrow {
+    width: 35px;
+    height: 35px;
   }
 }
 /*----------------------------------------------
-Premium template section end
+Global locations section end
 ----------------------------------------------*/
