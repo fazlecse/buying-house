@@ -5581,6 +5581,16 @@ Category section section end
 00. Products section section end
 ----------------------------------------------*/
 /*----------------------------------------------
+00. Our vision section start
+----------------------------------------------*/
+.our-vision-section {
+  background-color: var(--bg-color2);
+}
+
+/*----------------------------------------------
+00. Our vision section end
+----------------------------------------------*/
+/*----------------------------------------------
 00. clients section section start
 ----------------------------------------------*/
 .clients-section {
