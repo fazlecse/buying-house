@@ -235,8 +235,8 @@ h1 {
 
 @media (max-width: 991px) {
   h1 {
-    font-size: 36px;
-    line-height: 50px;
+    font-size: 46px;
+    line-height: 55px;
   }
 }
 
@@ -258,7 +258,19 @@ h2 {
   margin-bottom: 5px;
 }
 
+@media (max-width: 1199px) {
+  h2 {
+    font-size: 40px;
+  }
+}
+
 @media (max-width: 991px) {
+  h2 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 767px) {
   h2 {
     font-size: 28px;
   }
@@ -6638,7 +6650,7 @@ Nav end
 02. Bottom Mobile, Tab nav section start
 ----------------------------------------------*/
 .bottom-nav {
-  background: rgb(var(--bg-color1));
+  background: var(--bg-color1);
   justify-content: space-around;
   box-shadow: var(--shadow2);
   border-top-right-radius: 8px;
@@ -6747,7 +6759,17 @@ Bottom Mobile, Tab nav end
   }
 }
 
+@media(max-width: 1399px) {
+  .hero-swiper .swiper-slide {
+    padding: 150px 0;
+  }
+}
 
+@media(max-width: 991px) {
+  .hero-swiper .swiper-slide {
+    padding: 100px 0;
+  }
+}
 
 /*----------------------------------------------
 00. Hero section end
@@ -6828,6 +6850,8 @@ Category section section end
     transform: scale(1.04);
     transition: var(--transition);
     object-fit: cover;
+    width: 100%;
+    height: auto;
   }
 }
 
@@ -7419,6 +7443,20 @@ About section start
 }
 
 // Responsive about section end
+.rtl {
+  .about-img-box {
+    img {
+      padding-right: 0;
+      padding-left: 70px;
+    }
+
+    .experience-box {
+      right: auto;
+      left: 0;
+    }
+  }
+}
+
 /*----------------------------------------------
 About section end
 ----------------------------------------------*/
@@ -7765,15 +7803,14 @@ Copyright end
 }
 
 // Responsive banner section start
-@media (min-width: 768px) {
-  .banner-section .img-box {
-    margin-bottom: -50px;
-  }
-}
 
 @media (max-width: 991px) {
-  .banner-section h3 {
-    font-size: 36px;
+  .banner-section {
+    padding: 100px;
+
+    h3 {
+      font-size: 36px;
+    }
   }
 
   .breadcrumb-area {
@@ -7783,13 +7820,11 @@ Copyright end
 
 @media (max-width: 767px) {
   .banner-section {
-    padding: 40px;
-  }
-}
+    padding: 50px;
 
-@media (max-width: 575px) {
-  .banner-section .img-box {
-    max-width: 200px;
+    h3 {
+      font-size: 28px;
+    }
   }
 }
 
@@ -8078,13 +8113,18 @@ Error end
   border: 1px solid var(--border-color1);
   box-shadow: var(--shadow1);
   padding: 15px;
+  border-radius: 10px;
+
   .top-box {
     display: flex;
     gap: 15px;
-    .img-box{
-      width: 60px;
-      height: 60px;
-      img{
+
+    .img-box {
+      width: 50px;
+      min-width: 50px;
+      height: 50px;
+
+      img {
         border-radius: 50%;
       }
     }
@@ -8092,11 +8132,10 @@ Error end
 }
 
 .map-slick {
-  margin: 80px 50px 0 50px;
-  max-width: 645px;
+  margin: 0 25px;
 
   .slick-slide {
-    margin:  1px;
+    margin: 1px 3px;
     border: 2px solid transparent;
     border-radius: 10px;
   }
@@ -8110,10 +8149,11 @@ Error end
     height: 41px;
     background-color: rgb(var(--primary-color));
     border-radius: 50%;
+    z-index: 1;
   }
 
   .slick-prev {
-    left: -50px;
+    // left: -50px;
 
     &::before {
       line-height: 0.3;
@@ -8121,7 +8161,7 @@ Error end
   }
 
   .slick-next {
-    right: -50px;
+    // right: -50px;
 
     &::before {
       line-height: 0.3;

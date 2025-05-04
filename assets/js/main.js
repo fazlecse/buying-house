@@ -523,7 +523,27 @@ $(document).ready(function () {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // autoplay: true,
+    // rtl: true,
+    responsive:[
+      {
+        breakpoint: 992,
+        settings:{
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings:{
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 576,
+        settings:{
+          slidesToShow: 1,
+        }
+      }
+    ]
   });
 
   // Highlight country on init
