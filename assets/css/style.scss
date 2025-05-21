@@ -74,7 +74,7 @@ Typography
   --input-color2: #ffffff;
   --bg-color1: #ffffff;
   --bg-color2: #F1F8ED;
-  --bg-color3: 245, 245, 245;
+  --bg-color3: #21242e;
   --bg-color4: #020612;
   --border-color1: rgba(231, 234, 243, 0.7);
   --border-color2: rgba(140, 152, 164, 0.25);
@@ -277,7 +277,7 @@ h2 {
 }
 
 h3 {
-  font-size: 32px;
+  font-size: 36px;
   margin-bottom: 5px;
   font-weight: 400;
 }
@@ -326,13 +326,13 @@ figure {
 }
 
 .logo {
-  max-width: 120px;
-  min-width: 100px;
+  max-width: 150px;
+  min-width: 120px;
 }
 
 .footer-logo {
-  max-width: 130px;
-  min-width: 100px;
+  max-width: 150px;
+  min-width: 120px;
 }
 
 body {
@@ -995,7 +995,7 @@ a.ui-button:active,
 }
 
 .ui-widget-header {
-  background-color: hsl(var(--base) / 0.1);
+  background-color: rgb(var(--primary-color) / 0.1);
   border: none;
 }
 
@@ -2048,7 +2048,7 @@ Offcanvas end
   padding: 0 24px;
   border-radius: 0;
   transition: var(--transition);
-  font-size: 14px;
+  font-size: 16px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -6716,7 +6716,7 @@ Bottom Mobile, Tab nav end
   }
 
   .swiper-slide {
-    padding: 215px 0;
+    padding: 217px 0;
     position: relative;
 
     &::after {
@@ -6782,6 +6782,14 @@ Bottom Mobile, Tab nav end
   background-color: var(--bg-color2);
 }
 
+.process-item {
+  &:nth-child(even) {
+    .process-row {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
 /*----------------------------------------------
 Our process section end
 ----------------------------------------------*/
@@ -6833,6 +6841,59 @@ Our process section end
 
 /*----------------------------------------------
 Category section section end
+----------------------------------------------*/
+
+/*----------------------------------------------
+05. Brands sections start
+----------------------------------------------*/
+.brands-section {
+  background-color: rgb(var(--primary-color));
+  overflow: hidden;
+  padding: 60px 0;
+}
+
+.brand-item {
+  border-radius: 5px;
+
+  img {
+    min-width: 150px;
+    object-fit: cover;
+  }
+}
+
+.marquee-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.marquee {
+  display: flex;
+  gap: 50px;
+
+  &:hover {
+    .marquee-item-wrapper {
+      animation-play-state: paused;
+    }
+  }
+}
+
+
+.marquee-left {
+  .marquee-item-wrapper {
+    display: inline-block;
+    animation: marquee-left 40s infinite linear;
+  }
+}
+
+.marquee-item-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/*----------------------------------------------
+Brands section end
 ----------------------------------------------*/
 
 /*----------------------------------------------
@@ -7544,61 +7605,165 @@ Feature section start
 /*----------------------------------------------
 Feature section start end
 ----------------------------------------------*/
+
+
 /*----------------------------------------------
-19. Newsletter section start
+12. Newsletter section start
 ----------------------------------------------*/
-.newsletter-form {
-  margin-top: 40px;
+.newsletter-section {
   position: relative;
-  display: flex;
-  align-items: center;
+  z-index: 1;
 
-  .form-control {
-    border-radius: 50px;
-    height: 50px;
-    padding: 10px 50px 10px 10px;
-    border-color: var(--border-color1);
-    box-shadow: var(--shadow1);
-    color: rgb(var(--white));
+  .newsletter-section-inner {
+    background-color: rgb(var(--primary-color));
+    padding: 50px;
+    border-radius: 15px;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
 
-    &:focus {
-      border-color: rgb(var(--primary-color));
+    .shape {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      opacity: 0.2;
     }
   }
 
-  .subscribe-btn {
-    transition: var(--transition);
-    position: absolute;
-    right: 5px;
-    background-color: rgb(var(--primary-color));
-    height: calc(100% - 10px);
-    width: 40px;
-    border-radius: 50%;
+  .content-area {
+    font-family: var(--heading-font);
     color: rgb(var(--white));
+    text-transform: uppercase;
+    line-height: 40px;
+    font-weight: 500;
+
+
+    .subscribe-small-text {
+      font-size: 22px;
+    }
+
+    .subscribe-normal-text {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 0;
+      color: rgb(var(--white));
+    }
+  }
+
+  .newsletter-form {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
 
-    &:hover {
-      background-color: rgb(var(--primary-color), 0.8);
+    .form-control {
+      border-radius: 9999px;
+      height: 55px;
+      background-color: rgb(var(--white));
+      padding: 10px 165px 10px 20px;
+      border-color: rgb(var(--primary-color), 0.1);
+
+      &:focus {
+        border-color: rgb(var(--primary-color));
+      }
+    }
+
+    .subscribe-btn {
+      transition: var(--transition);
+      position: absolute;
+      right: 5px;
+      background-color: rgb(var(--heading-color));
+      height: calc(100% - 10px);
+      border-radius: 9999px;
+      padding: 10px 40px;
       color: rgb(var(--white));
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+
+      &:hover {
+        background-color: rgb(var(--primary-color));
+        color: rgb(var(--white));
+      }
     }
   }
 }
 
-// Rtl newsletter section start
+// Responsive neswletter section start
+@media (max-width: 991px) {
+  .newsletter-section {
+    .newsletter-section-inner {
+      padding: 50px;
+    }
+
+    .content-area {
+      .subscribe-small-text {
+        font-size: 20px;
+      }
+
+      .subscribe-normal-text {
+        font-size: 34px;
+      }
+    }
+
+    .newsletter-form {
+      .subscribe-btn {
+        padding: 10px 15px;
+      }
+
+      .form-control {
+        padding: 10px 110px 10px 10px;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 767px) {
+  .newsletter-section .content-area {
+    text-align: center;
+  }
+}
+
+@media (max-width: 575px) {
+  .newsletter-section {
+    .newsletter-section-inner {
+      padding: 20px;
+    }
+
+    .newsletter-form .form-control {
+      height: 50px;
+    }
+  }
+
+}
+
+// Responsive neswletter section end
+// Rtl newsletter section start 
 .rtl {
-  .newsletter-form {
+  .newsletter-section .newsletter-form {
     .form-control {
-      padding: 10px 10px 10px 50px;
+      padding: 10px 20px 10px 165px;
     }
 
     .subscribe-btn {
       left: 5px;
       right: auto;
+    }
+  }
 
-      i {
-        transform: rotatey(180deg);
+  @media (max-width: 991px) {
+    .newsletter-section {
+      .newsletter-form .form-control {
+        padding: 10px 10px 10px 110px;
+      }
+    }
+  }
+
+  @media (max-width: 575px) {
+    .newsletter-section .newsletter-form {
+      .subscribe-btn {
+        left: 3px;
       }
     }
   }
@@ -7606,7 +7771,7 @@ Feature section start end
 
 // Rtl newsletter section end
 /*----------------------------------------------
-Newsletter end
+Newsletter section end
 ----------------------------------------------*/
 
 /*----------------------------------------------
@@ -7632,7 +7797,12 @@ Newsletter end
 
   .social-box {
     a {
+      background-color: var(--bg-color3);
       color: rgb(var(--white));
+
+      &:hover {
+        background-color: rgb(var(--primary-color));
+      }
     }
   }
 }
@@ -7680,6 +7850,7 @@ Newsletter end
 .contact-item {
   display: flex;
   gap: 10px;
+  margin-bottom: 15px;
 
   i {
     color: rgb(var(--primary-color));
@@ -8178,4 +8349,121 @@ Error end
 
 /*----------------------------------------------
 Global locations section end
+----------------------------------------------*/
+
+/*----------------------------------------------
+Recent highlight section start
+----------------------------------------------*/
+.recent-highlight-item {
+  &:nth-child(even) {
+    .recent-highlight-row {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .img-box {
+    position: relative;
+    margin-bottom: 22px;
+
+    img {
+      aspect-ratio: 14/9;
+      object-fit: cover;
+    }
+
+    .date {
+      padding: 10px 30px;
+      background-color: rgb(var(--primary-color));
+      color: rgb(var(--white));
+      font-weight: 500;
+      font-size: 20px;
+      position: absolute;
+      bottom: -22px;
+      left: 22px;
+    }
+  }
+}
+
+/*----------------------------------------------
+Recent highlight section end
+----------------------------------------------*/
+
+/*----------------------------------------------
+Recent highlight details section start
+----------------------------------------------*/
+.recent-highlight-details {
+  .img-box {
+    img {
+      aspect-ratio: 14/8;
+      object-fit: cover;
+    }
+  }
+}
+
+/*----------------------------------------------
+Recent highlight details section end
+----------------------------------------------*/
+
+/*----------------------------------------------
+sustainability section start
+----------------------------------------------*/
+.sustainability-section {
+  .left-side {
+    position: sticky;
+    top: 75px;
+
+    .img-box {
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.product-box2 {
+  &:hover {
+    .img-box {
+      img {
+        transform: scale(1);
+      }
+    }
+  }
+
+  .img-box {
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      aspect-ratio: 14 / 15;
+      transform: scale(1.04);
+      transition: var(--transition);
+    }
+  }
+}
+
+/*----------------------------------------------
+sustainability section end
+----------------------------------------------*/
+
+/*----------------------------------------------
+sustainability goal section start
+----------------------------------------------*/
+.sustainability-goal-section {
+  background-color: var(--bg-color2);
+
+  &.two {
+    background-color: var(--bg-color1);
+  }
+
+  .img-box {
+    img {
+      aspect-ratio: 5 / 4;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+/*----------------------------------------------
+sustainability goal section end
 ----------------------------------------------*/
