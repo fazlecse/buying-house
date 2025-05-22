@@ -2112,15 +2112,14 @@ Offcanvas end
   position: relative;
   z-index: 1;
   color: rgb(var(--primary-color));
-  background-color: rgb(var(--primary-color), 0.05);
+  border: 1px solid rgb(var(--primary-color));
   padding: 0 24px;
-  border-radius: 9999px;
   transition: var(--transition);
-  font-size: 14px;
+  font-size: 16px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 400;
+  font-weight: 500;
   text-transform: capitalize;
   gap: 5px;
 
@@ -2171,24 +2170,6 @@ Offcanvas end
       gap: 10px;
       transition: 0.5s;
     }
-  }
-}
-
-.cmn-btn4 {
-  color: rgb(var(--heading-color));
-  transition: var(--transition);
-  font-size: 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: capitalize;
-  gap: 5px;
-  font-weight: 400;
-  position: relative;
-
-  &:hover {
-    color: rgb(var(--primary-color));
-    gap: 10px;
   }
 }
 
@@ -6694,10 +6675,10 @@ Bottom Mobile, Tab nav end
 00. Hero section start
 ----------------------------------------------*/
 .hero-section {
-  background-color: var(--bg-color 1);
+  background-color: var(--bg-color1);
   position: relative;
   padding: 0;
-
+  overflow: hidden;
 }
 
 .hero-swiper {
@@ -6707,12 +6688,24 @@ Bottom Mobile, Tab nav end
   .section-subtitle {
     color: rgb(var(--white));
     border-color: rgb(var(--white));
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 1000ms ease;
   }
 
   .text-box {
     h1 {
       color: rgb(var(--white));
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 1300ms ease;
     }
+  }
+
+  .cmn-btn {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 1000ms ease;
   }
 
   .swiper-slide {
@@ -6752,10 +6745,32 @@ Bottom Mobile, Tab nav end
     z-index: -1;
   }
 
-  .swiper-slide.swiper-slide-active .bg-layer {
-    -webkit-transform: scale(1.25);
-    -ms-transform: scale(1.25);
-    transform: scale(1.25);
+  .swiper-slide.swiper-slide-active {
+    .bg-layer {
+      -webkit-transform: scale(1.25);
+      -ms-transform: scale(1.25);
+      transform: scale(1.25);
+    }
+
+    .section-subtitle {
+      opacity: 1;
+      transform: translateX(0);
+      transition-delay: 1300ms;
+    }
+
+    .text-box {
+      h1 {
+        opacity: 1;
+        transform: translateX(0);
+        transition-delay: 1000ms;
+      }
+    }
+
+    .cmn-btn {
+      opacity: 1;
+      transform: translateX(0);
+      transition-delay: 1300ms;
+    }
   }
 }
 
@@ -6775,11 +6790,78 @@ Bottom Mobile, Tab nav end
 00. Hero section end
 ----------------------------------------------*/
 
+
+/*----------------------------------------------
+About section start
+----------------------------------------------*/
+.about-section {
+  background-color: rgb(var(--bg-color1));
+  position: relative;
+  overflow: hidden;
+}
+
+.about-text-box {
+  max-width: 892px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-img-box {
+  position: relative;
+
+  .experience-box {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: rgb(var(--black));
+    color: rgb(var(--white));
+    padding: 20px 30px;
+
+    h3,
+    h4 {
+      color: rgb(var(--white));
+    }
+
+  }
+
+}
+
+// Responsive about section stat
+@media (max-width: 991px) {
+  .about-text-box {
+    text-align: center;
+
+    .section-title {
+      margin: 0 auto 10px;
+    }
+  }
+}
+
+// Responsive about section end
+.rtl {
+  .about-img-box {
+    img {
+      padding-right: 0;
+      padding-left: 70px;
+    }
+
+    .experience-box {
+      right: auto;
+      left: 0;
+    }
+  }
+}
+
+/*----------------------------------------------
+About section end
+----------------------------------------------*/
+
 /*----------------------------------------------
 05. Our process section start
 ----------------------------------------------*/
 .our-process-section {
   background-color: var(--bg-color2);
+  overflow: hidden;
 }
 
 .process-item {
@@ -6797,6 +6879,10 @@ Our process section end
 /*----------------------------------------------
 00. Category section section start
 ----------------------------------------------*/
+.category-section {
+  overflow: hidden;
+}
+
 .category-box {
   position: relative;
   display: block;
@@ -6897,6 +6983,18 @@ Brands section end
 ----------------------------------------------*/
 
 /*----------------------------------------------
+00. clients section section start
+----------------------------------------------*/
+
+.clients-section {
+  background-color: var(--bg-color2);
+}
+
+/*----------------------------------------------
+clients section section end
+----------------------------------------------*/
+
+/*----------------------------------------------
 00. Products section section start
 ----------------------------------------------*/
 .product-box {
@@ -6932,24 +7030,13 @@ Brands section end
 ----------------------------------------------*/
 
 /*----------------------------------------------
-00. clients section section start
-----------------------------------------------*/
-
-.clients-section {
-  background-color: var(--bg-color2);
-}
-
-/*----------------------------------------------
-clients section section end
-----------------------------------------------*/
-
-/*----------------------------------------------
 18. Blog section start
 ----------------------------------------------*/
 .blog-section {
   background-image: url(../img/background/agency_bg3.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 .blog-btn {
@@ -7084,7 +7171,6 @@ clients section section end
     }
   }
 }
-
 
 // Responsive blog end
 
@@ -7427,185 +7513,6 @@ Blog section end
 /*----------------------------------------------
 Blog details end
 ----------------------------------------------*/
-.author-profile {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  .img-box {
-    img {
-      width: 60px;
-      min-width: 60px;
-      height: 60px;
-      border-radius: 10px;
-    }
-  }
-}
-
-.review-item {
-  border: 1px solid var(--border-color1);
-  padding: 20px 15px;
-  border-radius: 10px;
-}
-
-
-/*----------------------------------------------
-About section start
-----------------------------------------------*/
-.about-section {
-  background-color: rgb(var(--bg-color1));
-  position: relative;
-  overflow: hidden;
-}
-
-.about-text-box {
-  max-width: 892px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.about-img-box {
-  position: relative;
-
-  img {
-    padding-right: 70px;
-  }
-
-  .experience-box {
-    position: absolute;
-    top: 50px;
-    right: 0;
-    background-color: rgb(var(--black));
-    color: rgb(var(--white));
-    padding: 20px 30px;
-
-    h3,
-    h4 {
-      color: rgb(var(--white));
-    }
-
-  }
-
-}
-
-// Responsive about section stat
-@media (max-width: 991px) {
-  .about-text-box {
-    text-align: center;
-
-    .section-title {
-      margin: 0 auto 10px;
-    }
-  }
-
-  .about-img-box {
-    margin-top: 40px;
-  }
-}
-
-// Responsive about section end
-.rtl {
-  .about-img-box {
-    img {
-      padding-right: 0;
-      padding-left: 70px;
-    }
-
-    .experience-box {
-      right: auto;
-      left: 0;
-    }
-  }
-}
-
-/*----------------------------------------------
-About section end
-----------------------------------------------*/
-
-/*----------------------------------------------
-Why choose us section start
-----------------------------------------------*/
-.why-choose-us-section {
-  background-color: rgb(var(--primary-color), 0.05);
-}
-
-.why-choose-us-carousel {
-  .cmn-box {
-    padding: 99px 32px;
-
-    .img-box {
-      img {
-        width: initial;
-      }
-    }
-  }
-
-  .owl-nav.disabled+.owl-dots {
-    margin-top: 30px;
-  }
-}
-
-/*----------------------------------------------
-Why choose us section end
-----------------------------------------------*/
-
-/*----------------------------------------------
-Feature section start
-----------------------------------------------*/
-.feature-section {
-  background-color: rgb(var(--primary-color), 0.05);
-
-  .section-header {
-    max-width: 815px;
-  }
-}
-
-.feature-section-inner {
-  background-color: rgb(var(--bg-color1));
-  padding: 100px 90px;
-  padding-right: 0;
-  border-radius: 20px;
-}
-
-.feature-carousel {
-  .cmn-box {
-    padding: 40px 30px;
-
-    .img-box {
-      img {
-        width: initial;
-      }
-    }
-  }
-}
-
-// Responsive feaute section start
-@media (max-width: 991px) {
-  .feature-section-inner {
-    padding: 30px;
-  }
-}
-
-// Responsive feaute section end
-// Rtl feature section start
-.rtl {
-  .feature-section-inner {
-    padding-right: 90px;
-    padding-left: 0;
-  }
-
-  @media (max-width: 991px) {
-    .feature-section-inner {
-      padding: 30px;
-    }
-  }
-}
-
-// Rtl feature section end
-/*----------------------------------------------
-Feature section start end
-----------------------------------------------*/
-
 
 /*----------------------------------------------
 12. Newsletter section start
@@ -7679,7 +7586,7 @@ Feature section start end
       color: rgb(var(--white));
       display: flex;
       align-items: center;
-      font-weight: 600;
+      font-weight: 500;
 
       &:hover {
         background-color: rgb(var(--primary-color));
@@ -7702,7 +7609,7 @@ Feature section start end
       }
 
       .subscribe-normal-text {
-        font-size: 34px;
+        font-size: 28px;
       }
     }
 
@@ -8109,7 +8016,6 @@ Map section end
 26. Pagination section start
 ----------------------------------------------*/
 .pagination-section {
-  // margin-top: 50px;
   display: flex;
   justify-content: end;
 

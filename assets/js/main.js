@@ -14,157 +14,6 @@ if ($("nav").length) {
 }
 
 $(document).ready(function () {
-  // Testimonial section start
-  // Owl carousel
-  $(".testimonial-carousel").owlCarousel({
-    loop: true,
-    autoplay: true,
-    margin: 20,
-    autoplayTimeout: 2000,
-    nav: false,
-    navText: [
-      "<i class='fa-regular fa-angle-left'></i>",
-      "<i class='fa-regular fa-angle-right'></i>",
-    ],
-    // rtl: true,
-    responsive: {
-      0: {
-        items: 1,
-        dotsEach: 3,
-      },
-      600: {
-        items: 1,
-        nav: false,
-        dots: true,
-        dotsEach: 2,
-      },
-      768: {
-        items: 2,
-        nav: false,
-        dots: false,
-      },
-      1200: {
-        items: 3,
-        nav: false,
-        dots: false,
-      },
-    },
-  });
-  // Testimonial section end
-
-  // Why chose us carousel start
-  // Owl carousel
-  $(".why-choose-us-carousel").owlCarousel({
-    loop: true,
-    autoplay: true,
-    margin: 20,
-    autoplayTimeout: 2000,
-    nav: false,
-    navText: [
-      "<i class='fa-regular fa-angle-left'></i>",
-      "<i class='fa-regular fa-angle-right'></i>",
-    ],
-    // rtl: true,
-    responsive: {
-      0: {
-        items: 1,
-        dotsEach: 3,
-      },
-      600: {
-        items: 1,
-        nav: false,
-        dots: true,
-        dotsEach: 2,
-      },
-      768: {
-        items: 2,
-        nav: false,
-        dots: false,
-      },
-      1000: {
-        items: 1,
-        nav: false,
-        dots: true,
-      },
-    },
-  });
-  // Why chose us carousel start end
-
-  // Why chose us carousel start
-  // Owl carousel
-  $(".template-carousel").owlCarousel({
-    loop: true,
-    autoplay: true,
-    margin: 20,
-    autoplayTimeout: 2000,
-    nav: false,
-    navText: [
-      "<i class='fa-regular fa-angle-left'></i>",
-      "<i class='fa-regular fa-angle-right'></i>",
-    ],
-    // rtl: true,
-    responsive: {
-      0: {
-        items: 1,
-        dotsEach: 3,
-      },
-      600: {
-        items: 1,
-        nav: false,
-        dots: true,
-        dotsEach: 2,
-      },
-      768: {
-        items: 2,
-        nav: false,
-        dots: false,
-      },
-      1000: {
-        items: 1,
-        nav: true,
-        dots: false,
-      },
-    },
-  });
-  // Why chose us carousel start end
-
-  // Why chose us carousel start
-  // Owl carousel
-  $(".feature-carousel").owlCarousel({
-    loop: true,
-    autoplay: true,
-    margin: 20,
-    autoplayTimeout: 2000,
-    nav: false,
-    navText: [
-      "<i class='fa-regular fa-angle-left'></i>",
-      "<i class='fa-regular fa-angle-right'></i>",
-    ],
-    // rtl: true,
-    responsive: {
-      0: {
-        items: 1,
-        dotsEach: 3,
-      },
-      600: {
-        items: 1,
-        nav: false,
-        dots: true,
-        dotsEach: 2,
-      },
-      768: {
-        items: 2,
-        nav: false,
-        dots: false,
-      },
-      1000: {
-        items: 3,
-        nav: false,
-        dots: false,
-      },
-    },
-  });
-  // Why chose us carousel start end
 
   // Hero slider start
   if ($(".hero-swiper").length) {
@@ -180,7 +29,7 @@ $(document).ready(function () {
       effect: "fade",
       // autoplay: false,
       autoplay: {
-        delay: 8000,
+        delay: 7000,
         disableOnInteraction: false,
       },
       pagination: {
@@ -192,38 +41,6 @@ $(document).ready(function () {
       },
     });
   }
-  // Hero slider end
-
-  // Map slider start
-  // Mp start
-  // if ($(".map-slick").length) {
-  //   $(".map-slick").slick({
-  //     slidesToShow: 1,
-  //     slidesToScroll: 1,
-  //     dots: false,
-  //     arrows: true,
-  //     focusOnSelect: true,
-  //     // vertical: true,
-  //     // rtl: true,
-  //     responsive: [
-  //       {
-  //         breakpoint: 768,
-  //         settings: {
-  //           slidesToShow: 3,
-  //           arrows: true,
-  //         },
-  //       },
-  //       {
-  //         breakpoint: 426,
-  //         settings: {
-  //           slidesToShow: 2,
-  //           arrows: true,
-  //         },
-  //       },
-  //     ],
-  //   });
-  // }
-  // Map slider end
 
   // cmn select2 start
   $(".cmn-select2").select2();
@@ -352,6 +169,7 @@ $(document).ready(function () {
       });
   });
   // Round button animation end
+    AOS.init();
 });
 // Fancybox carousel section start
 if ($(".fancybox-carousel-section").length) {
@@ -504,58 +322,60 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // World map slider start
 $(document).ready(function () {
-  const $mapPaths = $("#world-map path[name]");
-  const $slider = $(".map-slick");
+  if ($(".map-slick").length) {
+    const $mapPaths = $("#world-map path[name]");
+    const $slider = $(".map-slick");
 
-  function highlightCountry(countryName) {
-    const target = countryName?.trim().toLowerCase();
-    $mapPaths.attr("fill", "#E6E6E6");
+    function highlightCountry(countryName) {
+      const target = countryName?.trim().toLowerCase();
+      $mapPaths.attr("fill", "#E6E6E6");
 
-    $mapPaths.each(function () {
-      if ($(this).attr("name")?.trim().toLowerCase() === target) {
-        $(this).attr("fill", "rgb(var(--primary-color))");
-      }
+      $mapPaths.each(function () {
+        if ($(this).attr("name")?.trim().toLowerCase() === target) {
+          $(this).attr("fill", "rgb(var(--primary-color))");
+        }
+      });
+    }
+
+    // Initialize Slick
+    $slider.slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      // rtl: true,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 2,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2,
+          },
+        },
+        {
+          breakpoint: 576,
+          settings: {
+            slidesToShow: 1,
+          },
+        },
+      ],
+    });
+
+    // Highlight country on init
+    const $initialSlide = $slider.find(".slick-slide:not(.slick-cloned)").eq(0);
+    const initCountry = $initialSlide.data("country");
+    highlightCountry(initCountry);
+
+    // Highlight country after slide change
+    $slider.on("afterChange", function (event, slick, currentSlide) {
+      const $realSlides = $slider.find(".slick-slide:not(.slick-cloned)");
+      const currentCountry = $realSlides.eq(currentSlide).data("country");
+      highlightCountry(currentCountry);
     });
   }
-
-  // Initialize Slick
-  $slider.slick({
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    // rtl: true,
-    responsive:[
-      {
-        breakpoint: 992,
-        settings:{
-          slidesToShow: 3,
-        }
-      },
-      {
-        breakpoint: 768,
-        settings:{
-          slidesToShow: 2,
-        }
-      },
-      {
-        breakpoint: 576,
-        settings:{
-          slidesToShow: 1,
-        }
-      }
-    ]
-  });
-
-  // Highlight country on init
-  const $initialSlide = $slider.find(".slick-slide:not(.slick-cloned)").eq(0);
-  const initCountry = $initialSlide.data("country");
-  highlightCountry(initCountry);
-
-  // Highlight country after slide change
-  $slider.on("afterChange", function (event, slick, currentSlide) {
-    const $realSlides = $slider.find(".slick-slide:not(.slick-cloned)");
-    const currentCountry = $realSlides.eq(currentSlide).data("country");
-    highlightCountry(currentCountry);
-  });
 });
 // World map slider end

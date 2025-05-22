@@ -1792,15 +1792,14 @@ Offcanvas end
   position: relative;
   z-index: 1;
   color: rgb(var(--primary-color));
-  background-color: rgb(var(--primary-color), 0.05);
+  border: 1px solid rgb(var(--primary-color));
   padding: 0 24px;
-  border-radius: 9999px;
   transition: var(--transition);
-  font-size: 14px;
+  font-size: 16px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 400;
+  font-weight: 500;
   text-transform: capitalize;
   gap: 5px;
 }
@@ -1842,23 +1841,6 @@ Offcanvas end
   align-items: center;
   gap: 10px;
   transition: 0.5s;
-}
-
-.cmn-btn4 {
-  color: rgb(var(--heading-color));
-  transition: var(--transition);
-  font-size: 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: capitalize;
-  gap: 5px;
-  font-weight: 400;
-  position: relative;
-}
-.cmn-btn4:hover {
-  color: rgb(var(--primary-color));
-  gap: 10px;
 }
 
 .login-btn {
@@ -5475,9 +5457,10 @@ Bottom Mobile, Tab nav end
 00. Hero section start
 ----------------------------------------------*/
 .hero-section {
-  background-color: var(--bg-color 1);
+  background-color: var(--bg-color1);
   position: relative;
   padding: 0;
+  overflow: hidden;
 }
 
 .hero-swiper {
@@ -5487,9 +5470,20 @@ Bottom Mobile, Tab nav end
 .hero-swiper .section-subtitle {
   color: rgb(var(--white));
   border-color: rgb(var(--white));
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 1000ms ease;
 }
 .hero-swiper .text-box h1 {
   color: rgb(var(--white));
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 1300ms ease;
+}
+.hero-swiper .cmn-btn {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 1000ms ease;
 }
 .hero-swiper .swiper-slide {
   padding: 217px 0;
@@ -5521,6 +5515,21 @@ Bottom Mobile, Tab nav end
 .hero-swiper .swiper-slide.swiper-slide-active .bg-layer {
   transform: scale(1.25);
 }
+.hero-swiper .swiper-slide.swiper-slide-active .section-subtitle {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 1300ms;
+}
+.hero-swiper .swiper-slide.swiper-slide-active .text-box h1 {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 1000ms;
+}
+.hero-swiper .swiper-slide.swiper-slide-active .cmn-btn {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 1300ms;
+}
 
 @media (max-width: 1399px) {
   .hero-swiper .swiper-slide {
@@ -5536,10 +5545,62 @@ Bottom Mobile, Tab nav end
 00. Hero section end
 ----------------------------------------------*/
 /*----------------------------------------------
+About section start
+----------------------------------------------*/
+.about-section {
+  background-color: rgb(var(--bg-color1));
+  position: relative;
+  overflow: hidden;
+}
+
+.about-text-box {
+  max-width: 892px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-img-box {
+  position: relative;
+}
+.about-img-box .experience-box {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: rgb(var(--black));
+  color: rgb(var(--white));
+  padding: 20px 30px;
+}
+.about-img-box .experience-box h3,
+.about-img-box .experience-box h4 {
+  color: rgb(var(--white));
+}
+
+@media (max-width: 991px) {
+  .about-text-box {
+    text-align: center;
+  }
+  .about-text-box .section-title {
+    margin: 0 auto 10px;
+  }
+}
+.rtl .about-img-box img {
+  padding-right: 0;
+  padding-left: 70px;
+}
+.rtl .about-img-box .experience-box {
+  right: auto;
+  left: 0;
+}
+
+/*----------------------------------------------
+About section end
+----------------------------------------------*/
+/*----------------------------------------------
 05. Our process section start
 ----------------------------------------------*/
 .our-process-section {
   background-color: var(--bg-color2);
+  overflow: hidden;
 }
 
 .process-item:nth-child(even) .process-row {
@@ -5552,6 +5613,10 @@ Our process section end
 /*----------------------------------------------
 00. Category section section start
 ----------------------------------------------*/
+.category-section {
+  overflow: hidden;
+}
+
 .category-box {
   position: relative;
   display: block;
@@ -5637,6 +5702,16 @@ Category section section end
 Brands section end
 ----------------------------------------------*/
 /*----------------------------------------------
+00. clients section section start
+----------------------------------------------*/
+.clients-section {
+  background-color: var(--bg-color2);
+}
+
+/*----------------------------------------------
+clients section section end
+----------------------------------------------*/
+/*----------------------------------------------
 00. Products section section start
 ----------------------------------------------*/
 .product-box {
@@ -5669,22 +5744,13 @@ Brands section end
 00. Our vision section end
 ----------------------------------------------*/
 /*----------------------------------------------
-00. clients section section start
-----------------------------------------------*/
-.clients-section {
-  background-color: var(--bg-color2);
-}
-
-/*----------------------------------------------
-clients section section end
-----------------------------------------------*/
-/*----------------------------------------------
 18. Blog section start
 ----------------------------------------------*/
 .blog-section {
   background-image: url(../img/background/agency_bg3.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 .blog-btn {
@@ -6049,143 +6115,6 @@ Blog section end
 /*----------------------------------------------
 Blog details end
 ----------------------------------------------*/
-.author-profile {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.author-profile .img-box img {
-  width: 60px;
-  min-width: 60px;
-  height: 60px;
-  border-radius: 10px;
-}
-
-.review-item {
-  border: 1px solid var(--border-color1);
-  padding: 20px 15px;
-  border-radius: 10px;
-}
-
-/*----------------------------------------------
-About section start
-----------------------------------------------*/
-.about-section {
-  background-color: rgb(var(--bg-color1));
-  position: relative;
-  overflow: hidden;
-}
-
-.about-text-box {
-  max-width: 892px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.about-img-box {
-  position: relative;
-}
-.about-img-box img {
-  padding-right: 70px;
-}
-.about-img-box .experience-box {
-  position: absolute;
-  top: 50px;
-  right: 0;
-  background-color: rgb(var(--black));
-  color: rgb(var(--white));
-  padding: 20px 30px;
-}
-.about-img-box .experience-box h3,
-.about-img-box .experience-box h4 {
-  color: rgb(var(--white));
-}
-
-@media (max-width: 991px) {
-  .about-text-box {
-    text-align: center;
-  }
-  .about-text-box .section-title {
-    margin: 0 auto 10px;
-  }
-  .about-img-box {
-    margin-top: 40px;
-  }
-}
-.rtl .about-img-box img {
-  padding-right: 0;
-  padding-left: 70px;
-}
-.rtl .about-img-box .experience-box {
-  right: auto;
-  left: 0;
-}
-
-/*----------------------------------------------
-About section end
-----------------------------------------------*/
-/*----------------------------------------------
-Why choose us section start
-----------------------------------------------*/
-.why-choose-us-section {
-  background-color: rgb(var(--primary-color), 0.05);
-}
-
-.why-choose-us-carousel .cmn-box {
-  padding: 99px 32px;
-}
-.why-choose-us-carousel .cmn-box .img-box img {
-  width: initial;
-}
-.why-choose-us-carousel .owl-nav.disabled + .owl-dots {
-  margin-top: 30px;
-}
-
-/*----------------------------------------------
-Why choose us section end
-----------------------------------------------*/
-/*----------------------------------------------
-Feature section start
-----------------------------------------------*/
-.feature-section {
-  background-color: rgb(var(--primary-color), 0.05);
-}
-.feature-section .section-header {
-  max-width: 815px;
-}
-
-.feature-section-inner {
-  background-color: rgb(var(--bg-color1));
-  padding: 100px 90px;
-  padding-right: 0;
-  border-radius: 20px;
-}
-
-.feature-carousel .cmn-box {
-  padding: 40px 30px;
-}
-.feature-carousel .cmn-box .img-box img {
-  width: initial;
-}
-
-@media (max-width: 991px) {
-  .feature-section-inner {
-    padding: 30px;
-  }
-}
-.rtl .feature-section-inner {
-  padding-right: 90px;
-  padding-left: 0;
-}
-@media (max-width: 991px) {
-  .rtl .feature-section-inner {
-    padding: 30px;
-  }
-}
-
-/*----------------------------------------------
-Feature section start end
-----------------------------------------------*/
 /*----------------------------------------------
 12. Newsletter section start
 ----------------------------------------------*/
@@ -6250,7 +6179,7 @@ Feature section start end
   color: rgb(var(--white));
   display: flex;
   align-items: center;
-  font-weight: 600;
+  font-weight: 500;
 }
 .newsletter-section .newsletter-form .subscribe-btn:hover {
   background-color: rgb(var(--primary-color));
@@ -6265,7 +6194,7 @@ Feature section start end
     font-size: 20px;
   }
   .newsletter-section .content-area .subscribe-normal-text {
-    font-size: 34px;
+    font-size: 28px;
   }
   .newsletter-section .newsletter-form .subscribe-btn {
     padding: 10px 15px;
